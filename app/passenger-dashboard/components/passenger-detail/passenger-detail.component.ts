@@ -28,6 +28,9 @@ import { Passenger } from '../../models/passenger.interface';
       <button (click)="onRemove()">
         Remove
       </button>
+      <button (click)="goToPassenger()">
+        View
+      </button>
     </div>
   `
 })
@@ -37,10 +40,13 @@ export class PassengerDetailComponent implements OnChanges, OnInit {
   detail: Passenger;
 
   @Output()
-  edit: EventEmitter<any> = new EventEmitter();
+  edit: EventEmitter<Passenger> = new EventEmitter<Passenger>();
 
   @Output()
-  remove: EventEmitter<any> = new EventEmitter();
+  remove: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+
+  @Output()
+    view: EventEmitter<Passenger> = new EventEmitter<Passenger>()
 
   editing: boolean = false;
 
@@ -70,5 +76,9 @@ export class PassengerDetailComponent implements OnChanges, OnInit {
   }
   onRemove() {
     this.remove.emit(this.detail);
+  }
+
+  goToPassenger() {
+    this.view.emit(this.detail);
   }
 }
