@@ -26,7 +26,7 @@
   },
   "scripts": {
     "prestart": "webpack --config vendor/webpack.config.js",
-    "start": "webpack-dev-server"
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.config.js --progress"
   },
   "devDependencies": {
     "@types/core-js": "0.9.34",
